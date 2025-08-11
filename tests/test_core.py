@@ -1,11 +1,18 @@
-def test_to_dataset_json():
-    import pandas as pd
-    from dsjson import load_metadata, to_dataset_json
+import pandas as pd
+from dsjson import load_column_metadata_any, create_dataset_json_v1_1
+import os
 
-    df = pd.read_csv(r"H:\py_Package\dataset_json\examples\vs.csv")
-    columns_df = load_metadata(r"H:\py_Package\dataset_json\examples\columns_vs.csv")
+# Get the directory of the current test file
+tests_dir = os.path.dirname(__file__)
+# Construct the relative path to the examples directory
+examples_dir = os.path.abspath(os.path.join(tests_dir, '..', 'examples'))
 
-    result = to_dataset_json(
+def test_create_dataset_json():
+    # Use the relative paths to load the files
+    df = pd.read_csv(os.path.join(examples_dir, "vs.csv"))
+    columns_df = load_column_metadata_any(os.path.join(examples_dir, "columns_vs.csv"))
+
+    result = create_dataset_json_v1_1(
         data_df=df,
         columns_df=columns_df,
         name="VS",
