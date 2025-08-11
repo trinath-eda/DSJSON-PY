@@ -25,15 +25,15 @@ pip install -e .[test]
 ### 🚀 Quick Start
 
 ```python
-from dsjson import load_column_metadata_any, create_dataset_json_v1_1
+from dsjson import load_metadata, to_dataset_json
 import pandas as pd
 
 # Load data and metadata
 rows = pd.read_csv("examples/vs.csv")
-columns = load_column_metadata_any("examples/columns_vs.csv", file_type="csv")
+columns = load_metadata("examples/columns_vs.csv", file_type="csv")
 
 # Create Dataset-JSON
-ds = create_dataset_json_v1_1(
+ds = to_dataset_json(
     data_df=rows,
     columns_df=columns,
     name="VS",
