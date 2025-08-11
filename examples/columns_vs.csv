@@ -1,0 +1,6 @@
+itemOID,name,label,dataType,length,keySequence
+IT.VS.STUDYID,STUDYID,Study Identifier,string,12,1
+IT.VS.DOMAIN,DOMAIN,Domain Abbreviation,string,2,2
+IT.VS.USUBJID,USUBJID,Unique Subject Identifier,string,20,3
+IT.VS.VSTESTCD,VSTESTCD,Vital Signs Test Code,string,8,4
+IT.VS.VSORRES,VSORRES,Result,float,3,5
