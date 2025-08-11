@@ -4,11 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dsjson"
-version = "0.2.0"
+version = "0.1.1"
 description = "A Python package to convert tabular data and metadata into CDISC Dataset-JSON v1.1 format."
 readme = "README.md"
 authors = [
-  { name = "Trinath Panda", email = "your.email@example.com" }
+  { name = "Trinath Panda", email = "pandatrinath1999@gmail.com" }
 ]
 license = { file = "LICENSE" }
 requires-python = ">=3.8"
