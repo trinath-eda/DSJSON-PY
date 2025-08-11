@@ -7,3 +7,4 @@ dist/
 *.egg-info/
 *.json
 .env
+.github
