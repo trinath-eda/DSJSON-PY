@@ -1,5 +1,5 @@
 import pandas as pd
-from dsjson import load_column_metadata_any, create_dataset_json_v1_1
+from dsjson import load_metadata, to_dataset_json
 import os
 
 # Get the directory of the current test file
@@ -10,9 +10,9 @@ examples_dir = os.path.abspath(os.path.join(tests_dir, '..', 'examples'))
 def test_create_dataset_json():
     # Use the relative paths to load the files
     df = pd.read_csv(os.path.join(examples_dir, "vs.csv"))
-    columns_df = load_column_metadata_any(os.path.join(examples_dir, "columns_vs.csv"))
+    columns_df = load_metadata(os.path.join(examples_dir, "columns_vs.csv"))
 
-    result = create_dataset_json_v1_1(
+    result = to_dataset_json(
         data_df=df,
         columns_df=columns_df,
         name="VS",
