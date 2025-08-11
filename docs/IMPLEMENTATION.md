@@ -6,8 +6,8 @@
 
 ### 🧱 Key Components:
 
-* `load_column_metadata_any`: Loads metadata from any supported format
-* `create_dataset_json_v1_1`: Creates the final JSON structure from metadata + data
+* `load_metadata`: Loads metadata from any supported format
+* `to_dataset_json`: Creates the final JSON structure from metadata + data
 
 ### 🎯 Design Decisions
 

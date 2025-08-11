@@ -3,7 +3,7 @@
 ### 🛠 Main Function: `create_dataset_json_v1_1`
 
 ```python
-def create_dataset_json_v1_1(
+def to_dataset_json(
     data_df: pd.DataFrame,
     columns_df: pd.DataFrame,
     datasetJSONVersion="1.1",
@@ -24,13 +24,13 @@ def create_dataset_json_v1_1(
 
 ```python
 # CSV
-load_column_metadata_any("columns_vs.csv", file_type="csv")
+load_metadata("columns_vs.csv", file_type="csv")
 
 # Excel
-load_column_metadata_any("columns_vs.xlsx", file_type="excel")
+load_metadata("columns_vs.xlsx", file_type="excel")
 
 # JSON
-load_column_metadata_any("columns_vs.json", file_type="json")
+load_metadata("columns_vs.json", file_type="json")
 ```
 
 ### 🔚 Output

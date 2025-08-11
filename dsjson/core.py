@@ -3,7 +3,7 @@ from datetime import datetime
 from collections import OrderedDict
 
 
-def load_column_metadata_any(source, file_type="csv"):
+def load_metadata(source, file_type="csv"):
     """
     Load column metadata from different formats (csv, excel, json, xml, DataFrame).
     """
@@ -21,7 +21,7 @@ def load_column_metadata_any(source, file_type="csv"):
         raise ValueError("Unsupported file_type. Use 'csv', 'excel', 'json', 'xml', or a DataFrame.")
 
 
-def create_dataset_json_v1_1(
+def to_dataset_json(
     data_df: pd.DataFrame,
     columns_df: pd.DataFrame,
     datasetJSONVersion: str = "1.1",

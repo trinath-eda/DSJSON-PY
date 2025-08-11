@@ -9,3 +9,10 @@
 - Auto datetime field generation
 - Single example and working test
 ```
+
+## [0.2.0] - 2025-08-11
+### Updated
+- Renamed `load_column_metadata_any` to `load_metadata`
+- Renamed `create_dataset_json_v1_1` to `to_dataset_json`
+
+```

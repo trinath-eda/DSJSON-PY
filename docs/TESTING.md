@@ -14,14 +14,14 @@ pytest
 ### 📄 Sample Test
 
 ```python
-def test_create_dataset_json():
+def test_to_dataset_json():
     import pandas as pd
-    from dsjson import load_column_metadata_any, create_dataset_json_v1_1
+    from dsjson import load_metadata, to_dataset_json
 
     df = pd.read_csv("examples/vs.csv")
-    columns = load_column_metadata_any("examples/columns_vs.csv")
+    columns = load_metadata("examples/columns_vs.csv")
 
-    result = create_dataset_json_v1_1(
+    result = to_dataset_json(
         data_df=df,
         columns_df=columns,
         name="VS",
