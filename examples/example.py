@@ -15,7 +15,7 @@ ds_json = to_dataset_json(
     itemGroupOID="IG.VS",  # Required field
     originator="My CRO",
     sourceSystem_name="python", 
-    sourceSystem_version="3.13",       
+    sourceSystem_version="3.10",       
     fileOID="F.VS.001",
     studyOID="S.1234"
 )

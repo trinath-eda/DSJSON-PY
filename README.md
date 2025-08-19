@@ -4,6 +4,12 @@
 
 A lightweight Python package to convert clinical tabular datasets (e.g., SDTM/ADaM) and metadata into **CDISC Dataset-JSON v1.1** format. It supports multiple metadata input formats including CSV, Excel, JSON, and XML (planned).
 
+[![PyPI version](https://badge.fury.io/py/dsjson.svg)](https://pypi.org/project/dsjson/)
+[![Build Status](https://github.com/<your-username>/dsjson/actions/workflows/tests.yml/badge.svg)](https://github.com/<your-username>/dsjson/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python Versions](https://img.shields.io/pypi/pyversions/dsjson.svg)](https://pypi.org/project/dsjson/)
+
+
 ### 🔧 Features
 
 * Converts `DataFrame` + column metadata to Dataset-JSON v1.1
@@ -13,13 +19,8 @@ A lightweight Python package to convert clinical tabular datasets (e.g., SDTM/AD
 * Clean and minimal API
 
 ### 📦 Installation
-
-```bash
-# Local installation (dev mode)
-pip install -e .
-
-# With test dependencies
-pip install -e .[test]
+```
+pip install dsjson
 ```
 
 ### 🚀 Quick Start
@@ -67,7 +68,7 @@ ds = to_dataset_json(
   "originator": "My CRO",
   "sourceSystem": {
     "name": "Python",
-    "version": "3.13"
+    "version": "3.10"
   }
 }
 ```
