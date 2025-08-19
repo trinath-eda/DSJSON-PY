@@ -1,13 +1,13 @@
 import pandas as pd
-from dsjson import load_column_metadata_any, create_dataset_json_v1_1
+from dsjson import load_metadata, to_dataset_json
 import json
 
 # Load data and metadata
 df = pd.read_csv(r"H:\py_Package\dataset_json\examples\vs.csv")
-columns_df = load_column_metadata_any(r"H:\py_Package\dataset_json\examples\columns_vs.csv", file_type="csv")
+columns_df = load_metadata(r"H:\py_Package\dataset_json\examples\columns_vs.csv", file_type="csv")
 
 # Create Dataset-JSON dict
-ds_json = create_dataset_json_v1_1(
+ds_json = to_dataset_json(
     data_df=df,
     columns_df=columns_df,
     name="VS",
