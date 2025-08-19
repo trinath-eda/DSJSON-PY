@@ -6,6 +6,7 @@ A lightweight Python package to convert clinical tabular datasets (e.g., SDTM/AD
 
 [![PyPI version](https://badge.fury.io/py/dsjson.svg)](https://pypi.org/project/dsjson/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Python Versions](https://img.shields.io/pypi/pyversions/dsjson.svg)
 
 
 ### 🔧 Features
