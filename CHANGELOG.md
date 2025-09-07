@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1] - 2025-09-07
+### Enhancements:
+- Replaced NaN values with null in the final JSON output for better JSON compliance.
+- Added validation for columns_df to ensure they are non-empty and of the correct type.
+- Optimized row processing for large datasets by using list comprehensions.
+- Added specific type hints for better code maintainability and clarity.
+
 ## [1.0] - 2025-08-20
 ### Added
 - First stable release published to PyPI.

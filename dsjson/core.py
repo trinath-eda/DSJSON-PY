@@ -1,9 +1,15 @@
 import pandas as pd
+import numpy as np
 from datetime import datetime
 from collections import OrderedDict
+from typing import Optional, Dict, Any, Union
+from pathlib import Path
 
 
-def load_metadata(source, file_type="csv"):
+def load_metadata(
+    source: Union[pd.DataFrame, str, Path], 
+    file_type: str = "csv"
+) -> pd.DataFrame:
     """
     Load column metadata from different formats (csv, excel, json, xml, DataFrame).
     """
@@ -25,7 +31,7 @@ def to_dataset_json(
     data_df: pd.DataFrame,
     columns_df: pd.DataFrame,
     datasetJSONVersion: str = "1.1",
-    name: str = None,
+    name: Optional[str] = None,
     label: str = None,
     itemGroupOID: str = None,  # Required
     # Compound top-level fields
@@ -39,10 +45,17 @@ def to_dataset_json(
     metaDataVersionOID: str = None,
     metaDataRef: str = None,
     **kwargs
-) -> dict:
+) -> dict[str, Any]:
     """
     Create a CDISC-compliant Dataset-JSON v1.1 structure with strict key ordering.
     """
+        # Add input validation
+    if not isinstance(data_df, pd.DataFrame):
+        raise TypeError("data_df must be a pandas DataFrame")
+    if not isinstance(columns_df, pd.DataFrame):
+        raise TypeError("columns_df must be a pandas DataFrame")
+    if columns_df.empty:
+        raise ValueError("columns_df cannot be empty")
 
     # Auto-generate creation timestamp
     datasetJSONCreationDateTime = datetime.now().isoformat()
@@ -64,7 +77,12 @@ def to_dataset_json(
     missing = [col for col in column_names if col not in data_df.columns]
     if missing:
         raise ValueError(f"Missing columns in row data: {missing}")
-    data_df = data_df[column_names]
+    
+    # Make a copy and handle missing values
+    data_df = data_df[column_names].copy()
+    # Replace NaN and None with None (which will be converted to null in JSON)
+    data_df = data_df.replace({np.nan: None})
+    data_df = data_df.where(pd.notna(data_df), None)
 
     # Assemble compound sourceSystem
     sourceSystem = None
@@ -100,7 +118,11 @@ def to_dataset_json(
     dataset_json["name"] = name
     dataset_json["label"] = label
     dataset_json["columns"] = columns_df.to_dict(orient="records")
-    dataset_json["rows"] = data_df.values.tolist()
+# Use this for large datasets:
+    dataset_json["rows"] = [
+        [None if pd.isna(val) else val for val in row] 
+        for row in data_df.values
+    ]
 
     # Add any additional top-level metadata if provided via kwargs
     dataset_json.update(kwargs)
